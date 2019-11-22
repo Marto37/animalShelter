@@ -4,7 +4,11 @@ import "./App.css";
 import PetCard from "./components/PetCard";
 import Navigation from "./components/Navigation";
 
-function App() {
+const App = () => {
+  const [pets, setPets] = React.useState([]);
+
+  fetch("getpets").then(response);
+
   return (
     <div className="App">
       <Navigation />
@@ -15,6 +19,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;
