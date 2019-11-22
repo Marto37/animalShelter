@@ -7,7 +7,16 @@ import Navigation from "./components/Navigation";
 const App = () => {
   const [pets, setPets] = React.useState([]);
 
-  fetch("getpets").then(response);
+  fetch("getpets")
+    .then(response => {
+      return response.json();
+    })
+    .then(pet => {
+      setPets([...pets, pet]);
+    })
+    .catch(error => {
+      console.log(error);
+    });
 
   return (
     <div className="App">
