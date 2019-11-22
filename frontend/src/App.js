@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import PetCard from "./components/PetCard";
 
 function App() {
   return (
