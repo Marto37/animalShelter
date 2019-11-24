@@ -1,6 +1,6 @@
 import React from "react"
 
-const About = () => {
+const About = () => (
     <>
     <h1>
         Our Mission
@@ -37,6 +37,6 @@ const About = () => {
         <p><b>Saturday - </b>10AM - 4PM</p>
     </p>
     </>
-}
+)
 
 export default About
