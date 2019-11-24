@@ -26,9 +26,13 @@ const petSchema = mongoose.Schema(
       type: Boolean,
       default: false
     },
-    img : { 
+    description : {
       type: String,
-      default: "https://picsum.photos/id/237/200/300"
+      default: "No description given :(((((("
+    },
+    species : {
+      type: String,
+      required: true
     }
   },
   { timestamps: true }
