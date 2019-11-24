@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
@@ -8,7 +9,7 @@ const PetCard = props => (
     <Card.Body>
       <Card.Title>{props.name}</Card.Title>
       <Card.Text>{props.body}</Card.Text>
-      <Button variant="primary">Go somewhere</Button>
+      <Button variant="info">View More Details</Button>
     </Card.Body>
   </Card>
 );
