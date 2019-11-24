@@ -33,12 +33,14 @@ const App = () => {
   return (
     <div className="App">
       <Navigation />
+      {console.log(pets)}
       <Row>
-        {console.log(pets)}
         {pets.map(pet => (
           <PetCard
             name={pet.name}
-            body={pet.breed}
+            breed={pet.breed}
+            status={pet.status}
+            old={pet.yearsOld}
             img="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
           />
         ))}
