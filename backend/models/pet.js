@@ -25,6 +25,10 @@ const petSchema = mongoose.Schema(
     adopted : {
       type: Boolean,
       default: false
+    },
+    img : { 
+      type: String,
+      default: "https://picsum.photos/id/237/200/300"
     }
   },
   { timestamps: true }
