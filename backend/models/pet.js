@@ -25,6 +25,14 @@ const petSchema = mongoose.Schema(
     adopted : {
       type: Boolean,
       default: false
+    },
+    description : {
+      type: String,
+      default: "No description given :(((((("
+    },
+    species : {
+      type: String,
+      required: true
     }
   },
   { timestamps: true }
