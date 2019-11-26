@@ -4,14 +4,21 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 const PetCard = props => (
-  <Card style={{ width: "18rem" }} onPress>
+  <Card style={{ width: "18rem" }}>
     <Card.Img variant="top" src={props.img} />
     <Card.Body>
-      <Card.Title>{props.name}</Card.Title>
-      <Card.Text>Breed: {props.breed}</Card.Text>
-      <Card.Text>Status: {props.status}</Card.Text>
+      <Card.Title>{props.pet.name}</Card.Title>
+      <Card.Text>Breed: {props.pet.breed}</Card.Text>
+      <Card.Text>Status: {props.pet.status}</Card.Text>
       <Link to="/aboutpet">
-        <Button variant="primary">More Info</Button>
+        <Button
+          variant="primary"
+          onClick={() => {
+            props.setCurrPet(props.pet);
+          }}
+        >
+          More Info
+        </Button>
       </Link>
     </Card.Body>
   </Card>

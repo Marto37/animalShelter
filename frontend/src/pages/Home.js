@@ -9,10 +9,8 @@ const Home = props => (
     <Row>
       {props.cats.map(cat => (
         <PetCard
-          name={cat.name}
-          breed={cat.breed}
-          status={cat.status}
-          old={cat.yearsOld}
+          pet={cat}
+          setCurrPet={props.setCurrPet}
           img="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
         />
       ))}
@@ -21,11 +19,9 @@ const Home = props => (
     <Row>
       {props.dogs.map(dog => (
         <PetCard
-          name={dog.name}
-          breed={dog.breed}
-          status={dog.status}
-          old={dog.yearsOld}
-          img="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
+          pet={dog}
+          setCurrPet={props.setCurrPet}
+          img="https://www.petmd.com/sites/default/files/senior-golden-retriever-with-ball-picture-id488657289.jpg"
         />
       ))}
     </Row>
