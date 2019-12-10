@@ -11,7 +11,6 @@ const App = () => {
   const [dogs, setDogs] = React.useState([]);
   const [cats, setCats] = React.useState([]);
   const [currPet, setCurrPet] = React.useState({});
-  const headers = { "Content-Type": "application/json" };
 
   // creates cards on startup
   React.useEffect(() => {
@@ -22,6 +21,7 @@ const App = () => {
     fetch("/pets")
       .then(res => res.json())
       .then(data => {
+        console.log(data);
         setCats(data.pets.filter(pet => pet._id === "cat").pop().pets);
         setDogs(data.pets.filter(pet => pet._id === "dog").pop().pets);
       });
