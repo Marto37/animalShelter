@@ -27,16 +27,6 @@ const App = () => {
       });
   };
 
-  // const addPet = data => {
-  //   fetch("/pets", {
-  //     method: "POST",
-  //     body: JSON.stringify(data),
-  //     headers
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => setPets([...pets, data.pet]));
-  // };
-
   return (
     <BrowserRouter>
       <Navigation />
