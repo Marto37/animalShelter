@@ -7,7 +7,7 @@ import PetModal from "../components/PetModal";
 import Button from "react-bootstrap/Button";
 
 const Home = props => {
-  const [modalShow, setModalShow] = React.useState(false);
+  // const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <Container fluid>
@@ -31,12 +31,12 @@ const Home = props => {
           />
         ))}
       </div>
-      <Button onClick={() => setModalShow(true)}>Add Pet</Button>
-      <PetModal
+      {/* <Button onClick={() => setModalShow(true)}>Add Pet</Button> */}
+      {/* <PetModal
         show={modalShow}
         onHide={() => setModalShow(false)}
         onAddPet={e => console.log(e)}
-      />
+      /> */}
     </Container>
   );
 };
