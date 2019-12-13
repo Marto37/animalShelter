@@ -14,23 +14,28 @@ const petSchema = mongoose.Schema(
       type: String,
       required: true
     },
+    url: {
+      type: String,
+      default:
+        "https://images.all-free-download.com/images/graphiclarge/animal_footprint_clip_art_6837.jpg"
+    },
     status: {
       type: String,
       required: true
     },
-    yearsOld : {
+    yearsOld: {
       type: Number,
       default: 0
     },
-    adopted : {
+    adopted: {
       type: Boolean,
       default: false
     },
-    description : {
+    description: {
       type: String,
       default: "No description given :(((((("
     },
-    species : {
+    species: {
       type: String,
       required: true
     }
