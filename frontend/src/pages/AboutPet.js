@@ -1,23 +1,27 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import { IoMdInformationCircleOutline } from 'react-icons/io';
+import { GiLoveInjection } from "react-icons/gi"
+import { FaDog } from 'react-icons/fa'
 
 const AboutPet = props => (
   <Container>
-    {console.log(props)}
     <section>
-      <h1>Name: {props.pet.name}</h1>
-      <img>{props.pet.img}</img>
-      <dl>
-        <dt>Breed: {props.pet.breed}</dt>
-        <dt>Status: {props.pet.status}</dt>
-        <dt>
-          {props.pet.gender}, {props.pet.age}
-        </dt>
-      </dl>
+      <h1>{props.pet.name}</h1>
+      <img src={props.pet.url} align="left" className="responsive"></img>
+      <div className="info">
+        <p><FaDog /> {props.pet.breed}</p>
+        <p><GiLoveInjection />{props.pet.status}</p>
+        <p><IoMdInformationCircleOutline />
+          {props.pet.gender === undefined ? "Male": props.pet.gender}, {props.pet.yearsOld} y/o
+        </p>
+      </div>
     </section>
+    <br clear="left" />
     <h1>Description</h1>
     <p>{props.pet.description}</p>
-    <button id="adopt">Adopt Me!</button>
+    <Button id="adopt" onClick={() => props.removePet(props.pet._id)}>Adopt Me!</Button>
   </Container>
 );
 

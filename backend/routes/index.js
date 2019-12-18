@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-var Pet = require("../models/pet.js");
+const controllers = require("../controllers");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -8,16 +8,7 @@ router.get("/", function(req, res, next) {
 });
 
 /* GET an array of all pets */
-router.get("/pets", function(req, res, next) {
-  Pet.aggregate([{ $group: { _id: "$species", pets: { $push: "$$ROOT" } } }])
-    .then(pets => {
-      res.json({ pets });
-    })
-    .catch(err => {
-      console.error(err);
-      res.json({ err });
-    });
-});
+router.get("/pets", controllers.pets.get);
 
 /**
  * Delete a specific pet.
@@ -29,43 +20,9 @@ router.get("/pets", function(req, res, next) {
  */
 
 //  not working!
-router.delete("/pets/:id", function(req, res, next) {
-  Pet.findByIdAndCascadeDelete({ _id: req.params.id })
-    .then(_ => {
-      res.locals.data = { deleted: "Success" };
-      res.locals.status = 200;
-      return next();
-    })
-    .catch(err => {
-      console.error(err);
-      res.locals.error = { error: err.message };
-      res.locals.status = 400;
-      return next();
-    });
-});
+router.delete("/pets/:id", controllers.pets.delete);
 
 /* POST a new pet */
-router.post("/pets", function(req, res, next) {
-  let newPet = new Pet({
-    name: "mydog",
-    breed: "test :(",
-    status: "doing very well",
-    yearsOld: "234",
-    adopted: "false",
-    species: "cat"
-  });
-  newPet
-    .save()
-    .then(pet => {
-      res.locals.data = { pet };
-      res.locals.status = 201;
-      res.json({ pet });
-    })
-    .catch(err => {
-      console.error(err);
-      res.locals.error = { error: err.message };
-      res.json({ err });
-    });
-});
+router.post("/pets", controllers.pets.store);
 
 module.exports = router;

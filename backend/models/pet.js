@@ -35,6 +35,10 @@ const petSchema = mongoose.Schema(
       type: String,
       default: "No description given :(((((("
     },
+    gender: {
+      type: String,
+      required: true
+    },
     species: {
       type: String,
       required: true
@@ -42,5 +46,6 @@ const petSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
 
 module.exports = mongoose.model("Pet", petSchema);
