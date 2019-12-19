@@ -1,11 +1,11 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import AboutPet from "./pages/AboutPet";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 
 const App = () => {
   const [dogs, setDogs] = React.useState([]);
@@ -17,15 +17,32 @@ const App = () => {
     getPets();
   }, []);
 
+  const addPet = () => {
+    fetch('/pets', { method: 'POST' }).then(() => {
+    })
+  }
+
   const getPets = () => {
     fetch("/pets")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setCats(data.pets.filter(pet => pet._id === "cat").pop().pets);
+        console.log(data.pets)
         setDogs(data.pets.filter(pet => pet._id === "dog").pop().pets);
       });
   };
+
+  const removePet = petId => {
+    fetch('/pets/' + petId, { method: 'DELETE' }).then(() => {
+      const dogsWithIdDeleted = dogs.filter(dog => dog._id !== petId)
+      setDogs(dogsWithIdDeleted)
+      const catsWithIdDeleted = cats.filter(cat => cat._id !== petId)
+      setCats(catsWithIdDeleted)
+      return true
+    }).catch(err => {
+      return false
+    })
+  }
 
   return (
     <BrowserRouter>
@@ -38,7 +55,7 @@ const App = () => {
           <About />
         </Route>
         <Route path="/aboutpet">
-          <AboutPet pet={currPet} />
+          <AboutPet pet={currPet} removePet={removePet} />
         </Route>
       </Switch>
     </BrowserRouter>
