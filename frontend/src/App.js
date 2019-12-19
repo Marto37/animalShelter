@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
@@ -21,11 +20,30 @@ const App = () => {
     fetch("/pets")
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setCats(data.pets.filter(pet => pet._id === "cat").pop().pets);
         setDogs(data.pets.filter(pet => pet._id === "dog").pop().pets);
       });
   };
+
+  const removePet = petId => {
+    fetch("/pets/" + petId, { method: "DELETE" }).then(() => {
+      const dogsWithIdDeleted = dogs.filter(pet => pet._id !== petId);
+      const catsWithIdDeleted = cats.filter(pet => pet._id !== petId);
+      setDogs(dogsWithIdDeleted);
+      setCats(catsWithIdDeleted);
+    });
+  };
+
+  // Need to figure out for dogs vs cats and their ids
+  // const addPet = petData => {
+  //   fetch("/api/pets", {
+  //     method: "POST",
+  //     body: JSON.stringify(petData),
+  //     headers
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => set([...posts, data.post]));
+  // };
 
   return (
     <BrowserRouter>
@@ -38,7 +56,7 @@ const App = () => {
           <About />
         </Route>
         <Route path="/aboutpet">
-          <AboutPet pet={currPet} />
+          <AboutPet pet={currPet} removePet={removePet} />
         </Route>
       </Switch>
     </BrowserRouter>
