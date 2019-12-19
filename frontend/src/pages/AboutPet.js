@@ -21,7 +21,10 @@ const AboutPet = props => (
     <br clear="left" />
     <h1>Description</h1>
     <p>{props.pet.description}</p>
-    <Button id="adopt" onClick={() => props.removePet(props.pet._id)}>Adopt Me!</Button>
+    <Button id="adopt" href = "/" onClick={() => {
+      props.removePet(props.pet._id);
+      document.getElementById("adoptstatus").innerHTML = "This pet has been adopted!";
+    }}><span id="adoptstatus">Adopt Me!</span></Button>
   </Container>
 );
 
