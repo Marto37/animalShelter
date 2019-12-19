@@ -16,34 +16,33 @@ const App = () => {
     getPets();
   }, []);
 
+  const addPet = () => {
+    fetch("/pets", { method: "POST" }).then(() => {});
+  };
+
   const getPets = () => {
     fetch("/pets")
       .then(res => res.json())
       .then(data => {
         setCats(data.pets.filter(pet => pet._id === "cat").pop().pets);
+        console.log(data.pets);
         setDogs(data.pets.filter(pet => pet._id === "dog").pop().pets);
       });
   };
 
   const removePet = petId => {
-    fetch("/pets/" + petId, { method: "DELETE" }).then(() => {
-      const dogsWithIdDeleted = dogs.filter(pet => pet._id !== petId);
-      const catsWithIdDeleted = cats.filter(pet => pet._id !== petId);
-      setDogs(dogsWithIdDeleted);
-      setCats(catsWithIdDeleted);
-    });
+    fetch("/pets/" + petId, { method: "DELETE" })
+      .then(() => {
+        const dogsWithIdDeleted = dogs.filter(dog => dog._id !== petId);
+        setDogs(dogsWithIdDeleted);
+        const catsWithIdDeleted = cats.filter(cat => cat._id !== petId);
+        setCats(catsWithIdDeleted);
+        return true;
+      })
+      .catch(err => {
+        return false;
+      });
   };
-
-  // Need to figure out for dogs vs cats and their ids
-  // const addPet = petData => {
-  //   fetch("/api/pets", {
-  //     method: "POST",
-  //     body: JSON.stringify(petData),
-  //     headers
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => set([...posts, data.post]));
-  // };
 
   return (
     <BrowserRouter>
