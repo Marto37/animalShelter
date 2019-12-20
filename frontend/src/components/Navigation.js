@@ -8,7 +8,7 @@ const Navigation = () => (
     <Navbar.Brand href="/">Pet Shop</Navbar.Brand>
     <Nav className="ml-auto">
       <Nav.Link href="/about">About</Nav.Link>
-      <Nav.Link href="/adopt">Adopt a pet</Nav.Link>
+      <Nav.Link href="/">Adopt a pet</Nav.Link>
     </Nav>
   </Navbar>
 );
