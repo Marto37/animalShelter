@@ -13,7 +13,7 @@ const AboutPet = props => (
       <div className="info">
         <p><FaDog /> {props.pet.breed}</p>
         <p><GiLoveInjection />{props.pet.status}</p>
-        <p><IoMdInformationCircleOutline />
+        <p><IoMdInformationCircleOutline /> 
           {props.pet.gender === undefined ? "Male": props.pet.gender}, {props.pet.yearsOld} y/o
         </p>
       </div>

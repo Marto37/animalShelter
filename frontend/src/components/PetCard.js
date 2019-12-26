@@ -20,7 +20,7 @@ const PetCard = props => (
         <ListGroup.Item><IoMdInformationCircleOutline />  {props.pet.gender === undefined ? "Male": props.pet.gender}, {props.pet.yearsOld} y/o</ListGroup.Item>
       </ListGroup>
       <Link to="/aboutpet">
-        <Button
+        <Button className="moreInfo"
           variant="primary"
           onClick={() => {
             props.setCurrPet(props.pet);
