@@ -13,7 +13,6 @@ const App = () => {
 
 	// creates cards on startup
 	React.useEffect(() => {
-		addPet();
 		getPets();
 	}, []);
 
